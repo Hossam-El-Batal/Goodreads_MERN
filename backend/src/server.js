@@ -1,19 +1,22 @@
 const express = require("express");
+
 const logger = require("morgan");
+
 const process = require("process");
+
 const app = express();
+
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const path = require("path");
+
+const booksRoute = require("./routes/BooksRoute");
+const reviewsRoute = require("./routes/ReviewsRoute");
+
 const port = process.env.PORT;
-const { dbConnection, mongose } = require("./utils/db").default;
 
-app.use(express.json());
-
-const authService = require("./utils/auth")(mongose);
-
-app.post("/register", async (request, res) => {
-  const response = await authService.register(request.body);
-  res
-    .status(response.status)
-    .json({ message: response.message, data: response.data });
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 app.listen(8080, () => {
