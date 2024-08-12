@@ -5,4 +5,4 @@ function isbnValidator(val) {
   return /^[0-9]{12}[0-9X]$/.test(val);
 }
 
-module.exports = { ratingValidator, isbnValidator };
+// module.exports = { ratingValidator, isbnValidator };
